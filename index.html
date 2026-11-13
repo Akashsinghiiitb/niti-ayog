@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Nitisha (Nitu) ❤️ With Love, Akash</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="selection:bg-pink-300 selection:text-wine pb-28">
+
+  <!-- Background Canvas for Floating Hearts & Sparkles -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- INTRO SCREEN / GATEWAY -->
+  <div id="intro-screen">
+    <div class="text-center p-8 max-w-md mx-4 glass-panel glow-box">
+      <div class="wax-seal mx-auto mb-5 heart-pulse">
+        <span>A❤️N</span>
+      </div>
+      <span class="text-xs tracking-widest uppercase font-semibold text-primary px-3 py-1 bg-pink-100 rounded-full inline-block mb-3">
+        A Special Surprise Just For You
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-serif-title font-bold text-wine mb-2">
+        Nitisha Singh
+      </h1>
+      <p class="font-script text-2xl text-primary-dark mb-4">
+        (My Dearest Nitu)
+      </p>
+      <p class="text-sm text-gray-700 leading-relaxed mb-6">
+        Akash built this little universe filled with our smiles, funny Ludo rivalry, unforgettable videos, and endless love. Ready to step inside?
+      </p>
+      <button id="enter-btn" class="w-full py-3.5 px-6 bg-gradient-to-r from-primary to-primary-dark text-white rounded-full font-semibold shadow-lg hover:shadow-pink-400/50 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+        <span>Tap to Open My Heart ❤️</span>
+        <i class="fas fa-sparkles"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- HIDDEN YOUTUBE PLAYER FOR BACKGROUND HINDI ROMANTIC MUSIC -->
+  <div id="yt-hidden-player" class="hidden"></div>
+
+  <!-- FLOATING MINI MUSIC PLAYER -->
+  <div class="music-bar glass-badge rounded-full p-2 pr-4 flex items-center gap-3 shadow-xl">
+    <div id="spinning-disc" class="w-10 h-10 rounded-full bg-gradient-to-tr from-pink-500 to-rose-600 flex items-center justify-center text-white text-xs shadow-inner">
+      <i class="fas fa-compact-disc text-xl"></i>
+    </div>
+    <div class="text-left hidden sm:block">
+      <p id="track-title" class="text-xs font-bold text-wine leading-tight truncate max-w-[130px]">Tum Se Hi</p>
+      <p id="track-artist" class="text-[10px] text-pink-700 truncate max-w-[130px]">Romantic Hindi Hit</p>
+    </div>
+    <div class="flex items-center gap-2">
+      <button id="prev-track-btn" class="w-7 h-7 rounded-full bg-pink-100 text-pink-700 hover:bg-pink-200 flex items-center justify-center text-xs transition" title="Previous Song">
+        <i class="fas fa-backward"></i>
+      </button>
+      <button id="play-toggle-btn" class="w-8 h-8 rounded-full bg-primary text-white hover:bg-primary-dark flex items-center justify-center text-xs shadow-md transition" title="Play/Pause">
+        <i id="play-icon" class="fas fa-play"></i>
+      </button>
+      <button id="next-track-btn" class="w-7 h-7 rounded-full bg-pink-100 text-pink-700 hover:bg-pink-200 flex items-center justify-center text-xs transition" title="Next Song">
+        <i class="fas fa-forward"></i>
+      </button>
+    </div>
+    <select id="song-selector" class="text-[11px] bg-pink-50 text-wine border border-pink-200 rounded-lg px-2 py-1 outline-none hidden md:block">
+      <!-- Options populated in js -->
+    </select>
+  </div>
+
+  <!-- MAIN WRAPPER -->
+  <main class="relative z-10 max-w-6xl mx-auto px-4 pt-8">
+
+    <!-- HERO / TITLE SECTION -->
+    <section id="home" class="text-center py-10 sm:py-16">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-100/90 border border-pink-200 text-pink-800 text-xs font-semibold uppercase tracking-wider mb-4 shadow-sm">
+        <i class="fas fa-heart text-primary animate-pulse"></i> Made With Love By Akash For Nitu
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl font-serif-title font-bold text-wine tracking-tight mb-3">
+        Forever My Favorite Person, <span class="text-primary font-handwriting block sm:inline text-5xl sm:text-7xl">Nitu</span>
+      </h1>
+      
+      <p class="max-w-2xl mx-auto text-base sm:text-lg text-gray-700 font-light leading-relaxed mb-8">
+        They say home isn't a place, it's a person. For me, every piece of happiness, laughter, and peace begins and ends with you, <strong>Nitisha Singh</strong>.
+      </p>
+
+      <!-- LIVE TIME SINCE 12 DEC 2025 -->
+      <div class="glass-panel p-6 sm:p-8 max-w-3xl mx-auto shadow-xl border-pink-200 mb-10">
+        <div class="flex items-center justify-center gap-2 mb-3 text-pink-700 text-sm font-semibold uppercase tracking-wide">
+          <i class="far fa-calendar-alt"></i> Time Since We Last Held Hands (12th Dec 2025)
+        </div>
+        <p class="text-xs text-gray-500 mb-6 italic">"Distance only proves how strong our love is. Every second brings us closer to our next hug."</p>
+        
+        <div class="grid grid-cols-4 gap-2 sm:gap-4 max-w-lg mx-auto">
+          <div class="bg-white/80 p-3 sm:p-4 rounded-2xl border border-pink-200 shadow-sm text-center">
+            <span id="timer-days" class="block text-2xl sm:text-4xl font-bold text-primary font-serif-title">00</span>
+            <span class="text-[10px] sm:text-xs uppercase text-gray-500 font-semibold tracking-wider">Days</span>
+          </div>
+          <div class="bg-white/80 p-3 sm:p-4 rounded-2xl border border-pink-200 shadow-sm text-center">
+            <span id="timer-hours" class="block text-2xl sm:text-4xl font-bold text-primary font-serif-title">00</span>
+            <span class="text-[10px] sm:text-xs uppercase text-gray-500 font-semibold tracking-wider">Hours</span>
+          </div>
+          <div class="bg-white/80 p-3 sm:p-4 rounded-2xl border border-pink-200 shadow-sm text-center">
+            <span id="timer-minutes" class="block text-2xl sm:text-4xl font-bold text-primary font-serif-title">00</span>
+            <span class="text-[10px] sm:text-xs uppercase text-gray-500 font-semibold tracking-wider">Minutes</span>
+          </div>
+          <div class="bg-white/80 p-3 sm:p-4 rounded-2xl border border-pink-200 shadow-sm text-center">
+            <span id="timer-seconds" class="block text-2xl sm:text-4xl font-bold text-primary font-serif-title">00</span>
+            <span class="text-[10px] sm:text-xs uppercase text-gray-500 font-semibold tracking-wider">Seconds</span>
+          </div>
+        </div>
+
+        <div class="mt-6 flex flex-wrap justify-center items-center gap-3">
+          <a href="#ludo" class="px-5 py-2.5 rounded-full bg-primary text-white text-xs font-semibold hover:bg-primary-dark transition shadow-md flex items-center gap-2">
+            <i class="fas fa-dice"></i> Check Ludo Score (19 vs 11)
+          </a>
+          <a href="#memories" class="px-5 py-2.5 rounded-full bg-white text-wine border border-pink-200 text-xs font-semibold hover:bg-pink-50 transition shadow-sm flex items-center gap-2">
+            <i class="fas fa-images"></i> Her Photo Vault (17 Photos)
+          </a>
+          <a href="#videos" class="px-5 py-2.5 rounded-full bg-white text-wine border border-pink-200 text-xs font-semibold hover:bg-pink-50 transition shadow-sm flex items-center gap-2">
+            <i class="fas fa-film"></i> Video Lounge
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE GREAT LUDO SHOWDOWN SECTION -->
+    <section id="ludo" class="py-12 scroll-mt-20">
+      <div class="text-center mb-8">
+        <span class="text-xs font-bold uppercase tracking-widest text-primary px-3 py-1 bg-pink-100 rounded-full">
+          The Legendary Rivalry 🎲
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-serif-title font-bold text-wine mt-2">
+          The Great Ludo Championship
+        </h2>
+        <p class="text-sm text-gray-600 max-w-xl mx-auto mt-2">
+          The official battleground where tokens were slaughtered, tears were shed, and lucky sixes decided our destiny!
+        </p>
+      </div>
+
+      <!-- Scoreboard Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-10">
+        
+        <!-- Akash Scorecard -->
+        <div class="glass-card p-6 border-2 border-pink-300 relative overflow-hidden">
+          <div class="absolute -right-6 -bottom-6 text-pink-100 text-9xl font-bold select-none pointer-events-none">19</div>
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xl shadow-inner font-bold">
+                👑
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-wine">Akash Singh</h3>
+                <p class="text-xs text-gray-500">The Tactical Mastermind</p>
+              </div>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-bold">Leader</span>
+          </div>
+
+          <div class="text-center py-4 bg-gradient-to-r from-pink-50 to-rose-50 rounded-2xl border border-pink-100 mb-4">
+            <span class="text-6xl font-bold font-serif-title text-primary block">19</span>
+            <span class="text-xs uppercase font-semibold tracking-wider text-gray-500">Official Victories</span>
+          </div>
+
+          <ul class="text-xs text-gray-600 space-y-2">
+            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Token Ambush Specialist</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Accused 47 times of "cheating" by Nitu</li>
+            <li class="flex items-center gap-2"><i class="fas fa-heart text-primary"></i> Secretly loves when Nitu pouts after losing</li>
+          </ul>
+        </div>
+
+        <!-- Nitu Scorecard -->
+        <div class="glass-card p-6 border-2 border-primary relative overflow-hidden bg-gradient-to-br from-white/90 to-pink-50/90 shadow-xl">
+          <div class="absolute -right-6 -bottom-6 text-pink-200 text-9xl font-bold select-none pointer-events-none">11</div>
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center text-xl shadow-md font-bold">
+                🏆
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-wine">Nitisha Singh (Nitu)</h3>
+                <p class="text-xs text-pink-600 font-semibold">The Unstoppable Queen of Sixes</p>
+              </div>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-pink-100 text-pink-700 text-xs font-bold">The Real Boss</span>
+          </div>
+
+          <div class="text-center py-4 bg-gradient-to-r from-pink-100 to-rose-100 rounded-2xl border border-pink-200 mb-4">
+            <span class="text-6xl font-bold font-serif-title text-primary-dark block">11</span>
+            <span class="text-xs uppercase font-semibold tracking-wider text-pink-800">Spectacular Wins</span>
+          </div>
+
+          <ul class="text-xs text-gray-700 space-y-2 font-medium">
+            <li class="flex items-center gap-2"><i class="fas fa-crown text-yellow-500"></i> Victory celebration includes teasing Akash</li>
+            <li class="flex items-center gap-2"><i class="fas fa-dice text-primary"></i> Rolls a 6 exactly when Akash is 1 step from home</li>
+            <li class="flex items-center gap-2"><i class="fas fa-trophy text-amber-500"></i> Won 11 games... and 100% of Akash's heart forever</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Interactive 3D Dice Roller -->
+      <div class="glass-panel p-6 sm:p-8 max-w-xl mx-auto text-center border-pink-300 shadow-xl mb-6">
+        <h4 class="font-serif-title font-bold text-xl text-wine mb-1">Interactive Dice Roller 🎲</h4>
+        <p class="text-xs text-gray-600 mb-6">Roll the dice right now to see what your next match would look like!</p>
+
+        <!-- 3D Dice -->
+        <div class="dice-scene mb-6">
+          <div id="dice-cube" class="dice-cube">
+            <!-- 1 Dot (Front) -->
+            <div class="dice-face face-1">
+              <div style="grid-column: 2; grid-row: 2;" class="dot"></div>
+            </div>
+            <!-- 2 Dots (Right) -->
+            <div class="dice-face face-2">
+              <div style="grid-column: 1; grid-row: 1;" class="dot"></div>
+              <div style="grid-column: 3; grid-row: 3;" class="dot"></div>
+            </div>
+            <!-- 3 Dots (Back) -->
+            <div class="dice-face face-3">
+              <div style="grid-column: 1; grid-row: 1;" class="dot"></div>
+              <div style="grid-column: 2; grid-row: 2;" class="dot"></div>
+              <div style="grid-column: 3; grid-row: 3;" class="dot"></div>
+            </div>
+            <!-- 4 Dots (Left) -->
+            <div class="dice-face face-4">
+              <div style="grid-column: 1; grid-row: 1;" class="dot"></div>
+              <div style="grid-column: 3; grid-row: 1;" class="dot"></div>
+              <div style="grid-column: 1; grid-row: 3;" class="dot"></div>
+              <div style="grid-column: 3; grid-row: 3;" class="dot"></div>
+            </div>
+            <!-- 5 Dots (Top) -->
+            <div class="dice-face face-5">
+              <div style="grid-column: 1; grid-row: 1;" class="dot"></div>
+              <div style="grid-column: 3; grid-row: 1;" class="dot"></div>
+              <div style="grid-column: 2; grid-row: 2;" class="dot"></div>
+              <div style="grid-column: 1; grid-row: 3;" class="dot"></div>
+              <div style="grid-column: 3; grid-row: 3;" class="dot"></div>
+            </div>
+            <!-- 6 Dots (Bottom) -->
+            <div class="dice-face face-6">
+              <div style="grid-column: 1; grid-row: 1;" class="dot"></div>
+              <div style="grid-column: 3; grid-row: 1;" class="dot"></div>
+              <div style="grid-column: 1; grid-row: 2;" class="dot"></div>
+              <div style="grid-column: 3; grid-row: 2;" class="dot"></div>
+              <div style="grid-column: 1; grid-row: 3;" class="dot"></div>
+              <div style="grid-column: 3; grid-row: 3;" class="dot"></div>
+            </div>
+          </div>
+        </div>
+
+        <p id="dice-result-text" class="text-sm font-medium text-gray-700 mb-5 min-h-[24px]">
+          Tap below to roll your lucky dice! ✨
+        </p>
+
+        <!-- Nitu's Cheat Mode Toggle -->
+        <div class="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-pink-50 rounded-full border border-pink-200">
+          <input type="checkbox" id="nitu-cheat-toggle" class="w-4 h-4 text-primary rounded focus:ring-pink-400 cursor-pointer" />
+          <label for="nitu-cheat-toggle" class="text-xs font-semibold text-wine cursor-pointer">
+            Activate "Nitu's Queen Mode" (Guaranteed 6 Every Roll! 👑)
+          </label>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <button id="roll-dice-btn" class="px-6 py-3 bg-gradient-to-r from-primary to-primary-dark text-white rounded-full font-semibold shadow-lg hover:shadow-pink-300 hover:scale-105 transition-all text-sm flex items-center gap-2">
+            <i class="fas fa-dice"></i> Roll The Dice!
+          </button>
+          
+          <a href="https://wa.me/?text=Hey%20Akash!%20%F0%9F%8E%B2%20I%20am%20challenging%20you%20to%20a%20Ludo%20rematch%20right%20now!%20Your%2019-11%20lead%20is%20about%20to%20vanish%20%F0%9F%98%8F" target="_blank" class="px-6 py-3 bg-green-500 text-white rounded-full font-semibold shadow-md hover:bg-green-600 hover:scale-105 transition-all text-sm flex items-center gap-2">
+            <i class="fab fa-whatsapp text-lg"></i> Challenge Akash on WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE INTERACTIVE GAME ARCADE -->
+    <section id="games" class="py-12 scroll-mt-20">
+      <div class="text-center mb-8">
+        <span class="text-xs font-bold uppercase tracking-widest text-primary px-3 py-1 bg-pink-100 rounded-full">
+          Fun & Romantic Mini-Games 🎮
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-serif-title font-bold text-wine mt-2">
+          Nitu's Special Arcade
+        </h2>
+        <p class="text-sm text-gray-600 max-w-xl mx-auto mt-2">
+          Play three cute interactive mini-games created exclusively for your smile!
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+        <!-- GAME 1: FORTUNE WHEEL -->
+        <div class="glass-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 text-wine font-bold text-lg mb-2">
+              <i class="fas fa-dharmachakra text-primary"></i>
+              <h3>Spin the Wheel of Love</h3>
+            </div>
+            <p class="text-xs text-gray-600 mb-4">Spin to find out what treat or coupon Akash owes you right now!</p>
+            
+            <div class="wheel-container mb-4">
+              <div class="wheel-pointer"></div>
+              <canvas id="wheel-canvas"></canvas>
+            </div>
+          </div>
+
+          <div>
+            <div id="wheel-result" class="min-h-[50px] mb-3 text-center text-xs"></div>
+            <button id="spin-wheel-btn" class="w-full py-2.5 bg-primary text-white rounded-xl font-semibold shadow hover:bg-primary-dark transition text-xs">
+              <i class="fas fa-sync-alt mr-1"></i> Spin Wheel!
+            </button>
+          </div>
+        </div>
+
+        <!-- GAME 2: AKASH & NITU LOVE QUIZ -->
+        <div class="glass-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 text-wine font-bold text-lg mb-2">
+              <i class="fas fa-question-circle text-primary"></i>
+              <h3>The Akash & Nitu Quiz</h3>
+            </div>
+            <p class="text-xs text-gray-600 mb-4">Test your couple knowledge to unlock your official universe certificate!</p>
+            
+            <div id="quiz-container">
+              <!-- Dynamically rendered -->
+            </div>
+          </div>
+        </div>
+
+        <!-- GAME 3: TAP-TAP HEART CATCHER -->
+        <div class="glass-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center gap-2 text-wine font-bold text-lg">
+                <i class="fas fa-heart text-primary"></i>
+                <h3>Love Catcher</h3>
+              </div>
+              <span id="heart-score" class="text-xs font-bold text-primary bg-pink-100 px-2.5 py-1 rounded-full">0%</span>
+            </div>
+            <p class="text-xs text-gray-600 mb-3">Tap the floating hearts inside the arena to fill the Love Meter to 100%!</p>
+
+            <!-- Progress Bar -->
+            <div class="w-full h-3 bg-pink-100 rounded-full overflow-hidden mb-3 border border-pink-200">
+              <div id="love-progress-bar" class="h-full bg-gradient-to-r from-pink-500 to-rose-600 w-0 transition-all duration-300"></div>
+            </div>
+
+            <!-- Game Arena -->
+            <div id="heart-game-area" class="w-full h-56 bg-gradient-to-b from-pink-50 to-white rounded-xl border border-pink-200 relative overflow-hidden shadow-inner flex items-center justify-center">
+              <p class="text-xs text-pink-300 pointer-events-none select-none text-center">
+                Hearts are floating...<br>Tap them quickly! ✨
+              </p>
+            </div>
+          </div>
+
+          <div id="secret-love-message" class="hidden mt-4 p-3 bg-rose-100 text-rose-900 border border-rose-300 rounded-xl text-xs font-semibold text-center animate-fade-in">
+            💖 <strong>100% Love Achieved!</strong><br>
+            Akash's Secret: <em>"My love for you doesn't fit on this meter; it is infinite and forever growing."</em>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- MEMORIES PHOTO VAULT (ALL 17 PHOTOS) -->
+    <section id="memories" class="py-12 scroll-mt-20">
+      <div class="text-center mb-8">
+        <span class="text-xs font-bold uppercase tracking-widest text-primary px-3 py-1 bg-pink-100 rounded-full">
+          Memory Vault 📸
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-serif-title font-bold text-wine mt-2">
+          Her Prettiest Moments
+        </h2>
+        <p class="text-sm text-gray-600 max-w-xl mx-auto mt-2">
+          Every photo is a reminder of how breathtaking, graceful, and irreplaceable you are to me.
+        </p>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap justify-center items-center gap-2 mt-6">
+          <button class="filter-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-primary text-white transition shadow-sm" data-filter="all">All (17)</button>
+          <button class="filter-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-wine hover:bg-pink-100 transition shadow-sm" data-filter="gorgeous">Goddess Looks</button>
+          <button class="filter-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-wine hover:bg-pink-100 transition shadow-sm" data-filter="smiles">Sweet Smiles</button>
+          <button class="filter-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-wine hover:bg-pink-100 transition shadow-sm" data-filter="aesthetic">Aesthetic Vibes</button>
+        </div>
+      </div>
+
+      <!-- Photo Grid -->
+      <div id="photo-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4 sm:gap-6">
+        <!-- Rendered by js/app.js -->
+      </div>
+    </section>
+
+    <!-- HER VIDEO LOUNGE (ALL 4 VIDEOS) -->
+    <section id="videos" class="py-12 scroll-mt-20">
+      <div class="text-center mb-8">
+        <span class="text-xs font-bold uppercase tracking-widest text-primary px-3 py-1 bg-pink-100 rounded-full">
+          Cinema of Nitu 🎬
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-serif-title font-bold text-wine mt-2">
+          Her Motion & Grace
+        </h2>
+        <p class="text-sm text-gray-600 max-w-xl mx-auto mt-2">
+          Photos capture a second, but these videos capture your lively spirit, your cute expressions, and your laughter.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Video 1 -->
+        <div class="glass-card p-4">
+          <div class="reel-video-container">
+            <video src="assets/videos/video1.mp4" playsinline loop preload="metadata"></video>
+            <div class="video-play-overlay absolute inset-0 bg-black/30 flex items-center justify-center cursor-pointer transition-opacity">
+              <div class="w-14 h-14 rounded-full bg-white/80 text-primary flex items-center justify-center text-xl shadow-lg hover:scale-110 transition">
+                <i class="fas fa-play ml-1"></i>
+              </div>
+            </div>
+            <button class="video-mute-btn absolute top-3 right-3 w-8 h-8 rounded-full bg-black/60 text-white flex items-center justify-center text-xs">
+              <i class="fas fa-volume-up"></i>
+            </button>
+          </div>
+          <p class="mt-3 text-xs font-semibold text-wine text-center">"Every smile of yours is pure magic ✨"</p>
+        </div>
+
+        <!-- Video 2 -->
+        <div class="glass-card p-4">
+          <div class="reel-video-container">
+            <video src="assets/videos/video2.mp4" playsinline loop preload="metadata"></video>
+            <div class="video-play-overlay absolute inset-0 bg-black/30 flex items-center justify-center cursor-pointer transition-opacity">
+              <div class="w-14 h-14 rounded-full bg-white/80 text-primary flex items-center justify-center text-xl shadow-lg hover:scale-110 transition">
+                <i class="fas fa-play ml-1"></i>
+              </div>
+            </div>
+            <button class="video-mute-btn absolute top-3 right-3 w-8 h-8 rounded-full bg-black/60 text-white flex items-center justify-center text-xs">
+              <i class="fas fa-volume-up"></i>
+            </button>
+          </div>
+          <p class="mt-3 text-xs font-semibold text-wine text-center">"That natural charm nobody can replicate 🌸"</p>
+        </div>
+
+        <!-- Video 3 -->
+        <div class="glass-card p-4">
+          <div class="reel-video-container">
+            <video src="assets/videos/video3.mp4" playsinline loop preload="metadata"></video>
+            <div class="video-play-overlay absolute inset-0 bg-black/30 flex items-center justify-center cursor-pointer transition-opacity">
+              <div class="w-14 h-14 rounded-full bg-white/80 text-primary flex items-center justify-center text-xl shadow-lg hover:scale-110 transition">
+                <i class="fas fa-play ml-1"></i>
+              </div>
+            </div>
+            <button class="video-mute-btn absolute top-3 right-3 w-8 h-8 rounded-full bg-black/60 text-white flex items-center justify-center text-xs">
+              <i class="fas fa-volume-up"></i>
+            </button>
+          </div>
+          <p class="mt-3 text-xs font-semibold text-wine text-center">"My favorite person in the entire world 🥰"</p>
+        </div>
+
+        <!-- Video 4 -->
+        <div class="glass-card p-4">
+          <div class="reel-video-container">
+            <video src="assets/videos/video4.mp4" playsinline loop preload="metadata"></video>
+            <div class="video-play-overlay absolute inset-0 bg-black/30 flex items-center justify-center cursor-pointer transition-opacity">
+              <div class="w-14 h-14 rounded-full bg-white/80 text-primary flex items-center justify-center text-xl shadow-lg hover:scale-110 transition">
+                <i class="fas fa-play ml-1"></i>
+              </div>
+            </div>
+            <button class="video-mute-btn absolute top-3 right-3 w-8 h-8 rounded-full bg-black/60 text-white flex items-center justify-center text-xs">
+              <i class="fas fa-volume-up"></i>
+            </button>
+          </div>
+          <p class="mt-3 text-xs font-semibold text-wine text-center">"Endless elegance and sweet vibes 💫"</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- REDEEMABLE LOVE COUPONS -->
+    <section id="coupons" class="py-12 scroll-mt-20">
+      <div class="text-center mb-8">
+        <span class="text-xs font-bold uppercase tracking-widest text-primary px-3 py-1 bg-pink-100 rounded-full">
+          Treats For Her 🎟️
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-serif-title font-bold text-wine mt-2">
+          Redeemable Love Coupons
+        </h2>
+        <p class="text-sm text-gray-600 max-w-xl mx-auto mt-2">
+          Click any coupon to claim it! Once claimed, it notifies Akash directly on WhatsApp to fulfill it!
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Coupon 1 -->
+        <div class="coupon-card p-5 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[10px] font-bold text-pink-700 uppercase tracking-widest">Coupon #01</span>
+              <span class="text-xs font-semibold text-green-700 bg-green-100 px-2 py-0.5 rounded">Guaranteed</span>
+            </div>
+            <h4 class="font-serif-title font-bold text-lg text-wine mb-1">1 Free Ludo Win 🎲</h4>
+            <p class="text-xs text-gray-600 mb-4">Akash promises not to kill your tokens and will happily let you win without teasing!</p>
+          </div>
+          <button class="claim-coupon-btn w-full py-2 bg-primary text-white rounded-xl text-xs font-semibold shadow hover:bg-primary-dark transition">
+            Claim Coupon 🎟️
+          </button>
+        </div>
+
+        <!-- Coupon 2 -->
+        <div class="coupon-card p-5 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[10px] font-bold text-pink-700 uppercase tracking-widest">Coupon #02</span>
+              <span class="text-xs font-semibold text-green-700 bg-green-100 px-2 py-0.5 rounded">Sweet Tooth</span>
+            </div>
+            <h4 class="font-serif-title font-bold text-lg text-wine mb-1">Midnight Ice Cream & Drive 🍦</h4>
+            <p class="text-xs text-gray-600 mb-4">Valid for late night cravings, favorite flavors, and warm conversations under the stars.</p>
+          </div>
+          <button class="claim-coupon-btn w-full py-2 bg-primary text-white rounded-xl text-xs font-semibold shadow hover:bg-primary-dark transition">
+            Claim Coupon 🎟️
+          </button>
+        </div>
+
+        <!-- Coupon 3 -->
+        <div class="coupon-card p-5 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[10px] font-bold text-pink-700 uppercase tracking-widest">Coupon #03</span>
+              <span class="text-xs font-semibold text-green-700 bg-green-100 px-2 py-0.5 rounded">Royal Privilege</span>
+            </div>
+            <h4 class="font-serif-title font-bold text-lg text-wine mb-1">"Nitu is 100% Right" Pass 👑</h4>
+            <p class="text-xs text-gray-600 mb-4">Instant win in any debate. Akash must nod, agree completely, and apologize with a chocolate.</p>
+          </div>
+          <button class="claim-coupon-btn w-full py-2 bg-primary text-white rounded-xl text-xs font-semibold shadow hover:bg-primary-dark transition">
+            Claim Coupon 🎟️
+          </button>
+        </div>
+
+        <!-- Coupon 4 -->
+        <div class="coupon-card p-5 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[10px] font-bold text-pink-700 uppercase tracking-widest">Coupon #04</span>
+              <span class="text-xs font-semibold text-green-700 bg-green-100 px-2 py-0.5 rounded">Cozy Vibes</span>
+            </div>
+            <h4 class="font-serif-title font-bold text-lg text-wine mb-1">Unlimited Warm Hugs & Cuddles 🫂</h4>
+            <p class="text-xs text-gray-600 mb-4">Redeemable for tight, comforting hugs with zero time limit whenever we meet next.</p>
+          </div>
+          <button class="claim-coupon-btn w-full py-2 bg-primary text-white rounded-xl text-xs font-semibold shadow hover:bg-primary-dark transition">
+            Claim Coupon 🎟️
+          </button>
+        </div>
+
+        <!-- Coupon 5 -->
+        <div class="coupon-card p-5 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[10px] font-bold text-pink-700 uppercase tracking-widest">Coupon #05</span>
+              <span class="text-xs font-semibold text-green-700 bg-green-100 px-2 py-0.5 rounded">Chef Akash</span>
+            </div>
+            <h4 class="font-serif-title font-bold text-lg text-wine mb-1">Akash Cooks Dinner For You 🍝</h4>
+            <p class="text-xs text-gray-600 mb-4">Whatever you crave, Akash will prepare, serve, and do the dishes while you relax.</p>
+          </div>
+          <button class="claim-coupon-btn w-full py-2 bg-primary text-white rounded-xl text-xs font-semibold shadow hover:bg-primary-dark transition">
+            Claim Coupon 🎟️
+          </button>
+        </div>
+
+        <!-- Coupon 6 -->
+        <div class="coupon-card p-5 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[10px] font-bold text-pink-700 uppercase tracking-widest">Coupon #06</span>
+              <span class="text-xs font-semibold text-green-700 bg-green-100 px-2 py-0.5 rounded">Heart to Heart</span>
+            </div>
+            <h4 class="font-serif-title font-bold text-lg text-wine mb-1">Late Night Deep Gossip Pass 🌙</h4>
+            <p class="text-xs text-gray-600 mb-4">No sleeping allowed! Just pillow talk, shared secrets, laughter, and romantic music until dawn.</p>
+          </div>
+          <button class="claim-coupon-btn w-full py-2 bg-primary text-white rounded-xl text-xs font-semibold shadow hover:bg-primary-dark transition">
+            Claim Coupon 🎟️
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- "OPEN WHEN..." SECRET LETTERS -->
+    <section id="letters" class="py-12 scroll-mt-20">
+      <div class="text-center mb-8">
+        <span class="text-xs font-bold uppercase tracking-widest text-primary px-3 py-1 bg-pink-100 rounded-full">
+          Secret Envelopes 💌
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-serif-title font-bold text-wine mt-2">
+          "Open When..." Virtual Letters
+        </h2>
+        <p class="text-sm text-gray-600 max-w-xl mx-auto mt-2">
+          Whenever you need words of comfort, reassurance, or a reminder of my love, open these letters.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Envelope 1 -->
+        <div class="open-when-card glass-card p-6 text-center cursor-pointer hover:border-primary transition group" data-letter="miss">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-pink-100 text-primary flex items-center justify-center text-2xl group-hover:scale-110 transition">
+            <i class="fas fa-envelope-open-text"></i>
+          </div>
+          <h4 class="font-bold text-wine text-base mb-1">Open When You Miss Me</h4>
+          <p class="text-xs text-gray-500">For the lonely nights when distance feels too far.</p>
+          <span class="inline-block mt-3 text-xs text-primary font-semibold group-hover:underline">Click to read →</span>
+        </div>
+
+        <!-- Envelope 2 -->
+        <div class="open-when-card glass-card p-6 text-center cursor-pointer hover:border-primary transition group" data-letter="angry">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-pink-100 text-primary flex items-center justify-center text-2xl group-hover:scale-110 transition">
+            <i class="fas fa-dove"></i>
+          </div>
+          <h4 class="font-bold text-wine text-base mb-1">Open When You're Mad at Akash</h4>
+          <p class="text-xs text-gray-500">When I've said something foolish and need your forgiveness.</p>
+          <span class="inline-block mt-3 text-xs text-primary font-semibold group-hover:underline">Click to read →</span>
+        </div>
+
+        <!-- Envelope 3 -->
+        <div class="open-when-card glass-card p-6 text-center cursor-pointer hover:border-primary transition group" data-letter="stressed">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-pink-100 text-primary flex items-center justify-center text-2xl group-hover:scale-110 transition">
+            <i class="fas fa-hand-holding-heart"></i>
+          </div>
+          <h4 class="font-bold text-wine text-base mb-1">Open When You've Had a Bad Day</h4>
+          <p class="text-xs text-gray-500">A virtual hug and reassurance of how resilient you are.</p>
+          <span class="inline-block mt-3 text-xs text-primary font-semibold group-hover:underline">Click to read →</span>
+        </div>
+
+        <!-- Envelope 4 -->
+        <div class="open-when-card glass-card p-6 text-center cursor-pointer hover:border-primary transition group" data-letter="beauty">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-pink-100 text-primary flex items-center justify-center text-2xl group-hover:scale-110 transition">
+            <i class="fas fa-sparkles"></i>
+          </div>
+          <h4 class="font-bold text-wine text-base mb-1">Open For A Beauty Reminder</h4>
+          <p class="text-xs text-gray-500">In case you ever forget that you are the prettiest girl on Earth.</p>
+          <span class="inline-block mt-3 text-xs text-primary font-semibold group-hover:underline">Click to read →</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- AKASH'S GRAND WAX-SEALED LOVE LETTER -->
+    <section class="py-12">
+      <div class="glass-panel p-8 sm:p-12 max-w-3xl mx-auto border-2 border-pink-300 shadow-2xl relative text-center">
+        
+        <div id="wax-seal-btn" class="wax-seal mx-auto mb-4 cursor-pointer">
+          <span>A❤️N</span>
+        </div>
+        <p class="text-xs font-semibold text-primary uppercase tracking-widest mb-1">
+          Handwritten with Eternal Love
+        </p>
+        <h3 class="text-2xl sm:text-3xl font-serif-title font-bold text-wine mb-4">
+          Akash's Unsealed Letter to Nitisha
+        </h3>
+        <p class="text-xs text-gray-500 italic mb-6">
+          (Click the wax seal above to open Akash's heart)
+        </p>
+
+        <!-- Hidden until wax seal clicked -->
+        <div id="grand-letter-content" class="text-left font-serif-title text-gray-800 leading-relaxed text-sm sm:text-base space-y-4 border-t border-pink-200 pt-6">
+          <p class="font-script text-3xl text-primary font-normal">My Dearest Nitu,</p>
+          
+          <p>
+            From the very moment you walked into my world, every ordinary thing started feeling magical. Your laughter is my favorite melody, your voice is my peace, and your happiness is my single biggest goal in this lifetime.
+          </p>
+          
+          <div class="p-4 bg-pink-50 border-l-4 border-primary rounded-r-xl my-4 text-wine italic text-sm">
+            "Tere chehre se nazar nahi hatti, nazaare hum kya dekhein...<br>
+            Tujhe milke hume har khushi mil gayi, ab dua mein hum kya maangein."
+          </div>
+
+          <p>
+            Yes, I might boast about beating you 19 times in Ludo, but the truth is, I would happily lose every single game, every argument, and every battle just to see that triumphant, radiant smile on your face.
+          </p>
+
+          <p>
+            Ever since our last meeting on <strong>12th December 2025</strong>, I count every sunrise until I can hold your hand again. Distance may test us, but it can never shake what we have. You are my today, my tomorrow, and my forever.
+          </p>
+
+          <div class="pt-6 border-t border-pink-100 flex items-center justify-between">
+            <div>
+              <p class="text-xs text-gray-500">Forever & Always,</p>
+              <p class="font-script text-3xl text-primary font-bold">Akash Singh</p>
+            </div>
+            <div class="text-4xl text-primary heart-pulse">
+              ❤️
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL LIGHTBOX FOR PHOTOS -->
+  <div id="lightbox-modal" class="modal-overlay" onclick="closeLightbox()">
+    <div class="relative max-w-3xl max-h-[90vh] p-4 text-center" onclick="event.stopPropagation()">
+      <button onclick="closeLightbox()" class="absolute top-2 right-2 w-9 h-9 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-black/80 transition z-20">
+        <i class="fas fa-times"></i>
+      </button>
+      <img id="lightbox-img" src="" alt="Nitisha" class="max-h-[75vh] w-auto mx-auto rounded-xl shadow-2xl object-contain border-4 border-white/90" />
+      <p id="lightbox-caption" class="text-white text-sm font-medium mt-3 bg-black/50 py-1.5 px-4 rounded-full inline-block"></p>
+      
+      <!-- Nav buttons -->
+      <button onclick="prevLightbox()" class="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black/80 transition">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button onclick="nextLightbox()" class="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black/80 transition">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- MODAL FOR OPEN WHEN LETTERS -->
+  <div id="letter-modal" class="modal-overlay" onclick="closeLetterModal()">
+    <div class="glass-panel p-6 sm:p-8 max-w-lg mx-4 rounded-3xl relative shadow-2xl" onclick="event.stopPropagation()">
+      <button onclick="closeLetterModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-pink-100 text-pink-700 hover:bg-pink-200 flex items-center justify-center transition">
+        <i class="fas fa-times"></i>
+      </button>
+      <h3 id="letter-modal-title" class="font-serif-title font-bold text-xl text-wine mb-4 border-b border-pink-200 pb-3"></h3>
+      <div id="letter-modal-body" class="text-sm text-gray-700 leading-relaxed max-h-[60vh] overflow-y-auto pr-2"></div>
+    </div>
+  </div>
+
+  <!-- BOTTOM NAVIGATION DOCK -->
+  <nav class="nav-dock">
+    <a href="#home" class="nav-item active">
+      <i class="fas fa-heart"></i>
+      <span>Home</span>
+    </a>
+    <a href="#ludo" class="nav-item">
+      <i class="fas fa-dice"></i>
+      <span>Ludo</span>
+    </a>
+    <a href="#games" class="nav-item">
+      <i class="fas fa-gamepad"></i>
+      <span>Games</span>
+    </a>
+    <a href="#memories" class="nav-item">
+      <i class="fas fa-images"></i>
+      <span>Photos</span>
+    </a>
+    <a href="#videos" class="nav-item">
+      <i class="fas fa-film"></i>
+      <span>Videos</span>
+    </a>
+    <a href="#coupons" class="nav-item">
+      <i class="fas fa-ticket-alt"></i>
+      <span>Coupons</span>
+    </a>
+    <a href="#letters" class="nav-item">
+      <i class="fas fa-envelope"></i>
+      <span>Letters</span>
+    </a>
+  </nav>
+
+  <!-- App Script -->
+  <script src="js/app.js"></script>
+</body>
+</html>
+
