@@ -1,55 +1,43 @@
-# 💖 Akash & Nitisha (Nitu) - Love Story Website
+# 💖 Akash & Nitisha (Nitu) - Free Hosting Guide
 
-### 🌐 How to Preview Locally:
-- You can simply double click `index.html` in this folder anytime to open it in Chrome, Edge, or Safari!
-- Or, if you want full background music with local server, run:
-  ```powershell
-  python -m http.server 8080
-  ```
-  and visit `http://localhost:8080`.
+Your website is already committed to a local Git repository on the `main` branch. 
+
+Here are the two simplest ways to get your free live link to send to Nitu:
 
 ---
 
-### 🚀 How to Send This Website to Nitu (Free & Instant in 1 Minute):
-To send her a live link on WhatsApp so she can open it on her phone:
+## 🌟 Option A: GitHub Pages (Free forever, clean link)
 
-1. **Option 1: Netlify Drop (Easiest - 30 seconds, No Signup required)**:
-   - Go to [https://app.netlify.com/drop](https://app.netlify.com/drop)
-   - Drag and drop your `nitisha` folder onto the page.
-   - It will give you a live URL like `https://akash-loves-nitu.netlify.app`.
-   - Send that link to her on WhatsApp!
+### Step 1: Create an empty repository on GitHub
+1. Open [https://github.com/new](https://github.com/new)
+2. Enter repository name: **`for-nitu`** (or any name you like)
+3. Set it to **Public**
+4. Leave all checkboxes (**README**, **.gitignore**, **license**) **UNCHECKED**
+5. Click **"Create repository"**
 
-2. **Option 2: Vercel or GitHub Pages**:
-   - Upload the folder to GitHub and enable GitHub Pages under repository settings.
+### Step 2: Push your code
+Open PowerShell in this folder (`c:\Users\ap775\OneDrive\Desktop\nitisha`) and run:
+```powershell
+git remote add origin https://github.com/Akashsinghiiitb/for-nitu.git
+git push -u origin main
+```
+*(Or simply run `./push_to_github.ps1`)*
+
+### Step 3: Turn on GitHub Pages
+1. Go to your repository settings: `https://github.com/Akashsinghiiitb/for-nitu/settings/pages`
+2. Under **"Build and deployment"** ➔ **Branch**, choose **`main`** and folder **`/(root)`**
+3. Click **Save**
+
+Within 1 minute, your site will be live at:
+👉 **`https://akashsinghiiitb.github.io/for-nitu/`**
 
 ---
 
-### ✨ Features Included:
-1. **Grand Welcome Screen**: "Tap to Open My Heart" button with heart pulse and confetti.
-2. **Romantic Hindi Music Player**: Plays iconic romantic songs (Tum Se Hi, Kesariya, Raataan Lambiyan, Apna Bana Le, Pehle Bhi Main, Ve Kamleya) with disc animation and playlist switcher.
-3. **Live Distance Counter**: Days, hours, minutes, and seconds counted live since **12th December 2025**.
-4. **The Great Ludo Championship 🎲**:
-   - Akash (19 Wins) vs Nitu (11 Wins).
-   - Real 3D interactive Dice Roller with sound/animation.
-   - "Nitu's Queen Mode" cheat switch (guarantees a 6 every roll!).
-   - "Challenge Akash on WhatsApp" button.
-5. **Interactive Games Arcade 🎮**:
-   - *Wheel of Love*: Spin to find out what treat Akash owes her today.
-   - *Love Quiz*: 4 sweet questions leading to an official "Best Girlfriend in the Galaxy" certificate.
-   - *Love Catcher*: Tap floating hearts to fill the 100% Love Meter and unlock Akash's secret message.
-6. **Memories Photo Vault 📸**:
-   - All 17 photos displayed as aesthetic Polaroids.
-   - Filters: Goddess Looks, Sweet Smiles, Aesthetic Vibes.
-   - Zoom Lightbox with next/previous controls and Heart reaction button.
-7. **Cinema of Nitu 🎬**:
-   - All 4 videos in Instagram Reel format with custom play/pause and sound toggles.
-8. **Redeemable Love Coupons 🎟️**:
-   - 6 custom coupons (e.g., Free Ludo Win, Midnight Ice Cream, Unlimited Hugs).
-   - Clicking "Claim" notifies you on WhatsApp!
-9. **"Open When..." Virtual Letters 💌**:
-   - Letters for when she misses you, when she's mad, when she's stressed, and when she needs a reminder of her beauty.
-10. **Akash's Grand Wax-Sealed Letter 📜**:
-    - Clickable wax seal with Hindi shayari and deep romantic letter.
-11. **Floating Navigation Dock**:
-    - Smooth navigation on mobile and desktop.
+## ⚡ Option B: Vercel (1-Click Deploy)
 
+Once you push to GitHub:
+1. Go to [https://vercel.com/new](https://vercel.com/new) and log in with your GitHub account (`Akashsinghiiitb`).
+2. You will see **`for-nitu`** in the list — click **"Import"**.
+3. Leave all settings as default and click **"Deploy"**.
+4. In 20 seconds, Vercel gives you a live link like:
+   👉 **`https://for-nitu.vercel.app`**
